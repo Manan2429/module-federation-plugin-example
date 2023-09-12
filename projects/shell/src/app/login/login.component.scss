@@ -1,0 +1,222 @@
+// /* P r o p r i e t a r y N o t i c e */
+// /* Unpublished © 2020 Allscripts Healthcare, LLC and/or its affiliates. All Rights
+// Reserved.
+// *
+// * P r o p r i e t a r y N o t i c e: This software has been provided pursuant to a License Agreement, with Allscripts
+// Healthcare, LLC and/or its affiliates, containing restrictions on its use. This software contains valuable trade secrets
+// and proprietary information of Allscripts Healthcare, LLC and/or its affiliates and is protected by trade secret and
+// copyright law. This software may not be copied or distributed in any form or medium, disclosed to any third parties,
+// or used in any manner not provided for in said License Agreement except with prior written authorization from
+// Allscripts Healthcare, LLC and/or its affiliates. Notice to U.S. Government Users: This software is “Commercial
+// Computer Software.”
+// Allscripts Common Services Operations Portal™ is a trademark of Allscripts Healthcare, LLC and/or its affiliates.
+// *
+// *
+// */
+// /* P r o p r i e t a r y N o t i c e */
+
+// @import '~ux-theme-base/scss/app';
+// @import '~ux-theme-base/scss/app-base';
+// @import '~ux-theme-base/scss/app-variables';
+// @import '~ux-theme-base/scss/buttons';
+// @import '~ux-theme-base/scss/mixins';
+
+// .login-page {
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   bottom: 0;
+//   overflow: auto;
+//   //background: $topnav-background-color;
+//   background-image: linear-gradient(to bottom, #ffffff, #cccccc);
+//   // text-align: center;
+//   padding-left: 16px;
+//   color: $asg-gray-255;
+//   padding: 3em;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+
+//   .col-lg-4 {
+//     padding: 0;
+//   }
+
+//   .login-panel {
+//     background-color: $allscripts-branding-dark-bg;
+//     margin-top: calc(20vh);
+//     padding-bottom: 16px;
+//     padding-top: 16px;
+//     border-right: 14px solid $allscripts-branding-blue;
+//     width: 340px; //width: 340px;
+//     .logo {
+//       display: flex;
+//       align-items: center;
+//       flex: 1;
+//       height: 30px;
+//       margin-left: 16px;
+//     }
+
+//     .title {
+//       font-family: Nunito, Roboto, Helvetica, Arial, sans-serif;
+//       font-size: 28px;
+//       font-weight: 500;
+//       margin-left: 16px;
+//       font-style: normal;
+//       font-stretch: normal;
+//       line-height: 1.21;
+//       color: $allscripts-branding-blue;
+//     }
+
+//     .line-part {
+//       width: 60px;
+//       height: 2px;
+//       background-color: $allscripts-branding-blue;
+//       margin-left: 16px;
+//       margin-top: 10px;
+//       margin-bottom: 10px;
+//     }
+
+//     .alert-danger {
+//       margin-left: 16px;
+//       margin-right: 16px;
+//       background-color: $asg-red;
+//       border-radius: 4px;
+//       padding: 5px;
+//       color: white;
+
+
+//       p {
+//         text-align: center;
+//         color: white;
+//       }
+//     }
+//   }
+
+
+//   .version {
+//     font-size: 14px;
+//     font-weight: normal;
+//     font-style: normal;
+//     font-stretch: normal;
+//     text-align: center;
+//     color: $asg-text;
+//     margin-top: 16px;
+//   }
+
+//   .copy-right {
+//     font-size: 10px;
+//     font-weight: normal;
+//     font-style: normal;
+//     font-stretch: normal;
+//     text-align: center;
+//     color: $asg-text;
+//     position: fixed;
+//     bottom: 16px;
+//     left: 50px;
+//     right: 50px;
+//     margin-right: 30px;
+//   }
+
+//   .input-lg {
+//     height: 46px;
+//     padding: 10px 16px;
+//     font-size: 18px;
+//     line-height: 1.3333333;
+//     border-radius: 0;
+//   }
+
+//   .input-underline {
+//     background: 0 0;
+//     border: none;
+//     box-shadow: none;
+//     border-bottom: 2px solid $asg-blue-dark;
+//     color: $asg-blue-dark;
+//     border-radius: 0;
+//   }
+
+//   .input-underline:focus {
+//     border-bottom: 2px solid $asg-blue-dark;
+//     box-shadow: none;
+//   }
+
+//   .rounded-btn {
+//     -webkit-border-radius: 4px;
+//     border-radius: 4px;
+//     color: $asg-text;
+//     // background: $asg-blue-dark;
+//     background-image: linear-gradient(to bottom, #ffffff, #c0e0e2);
+//     border: 2px solid $asg-blue-dark;
+//     font-size: 18px;
+//     line-height: 40px;
+//     padding: 0 25px;
+//     width: 100%;
+//   }
+
+//   .rounded-btn:hover, .rounded-btn:focus, .rounded-btn:active, .rounded-btn:visited {
+//     color: $allscripts-branding-blue;
+//     border: 2px solid rgba(255,255,255,1);
+//     outline: none;
+//   }
+
+//   h1 {
+//     font-weight: 300;
+//     margin-top: 20px;
+//     margin-bottom: 10px;
+//     font-size: 36px;
+//     color: $asg-blue-dark;
+
+//     small {
+//       color: $asg-blue-dark;
+//     }
+//   }
+
+//   .form-group {
+//     padding: 8px 0;
+
+//     input::-webkit-input-placeholder {
+//       color: #999999 !important;
+//       font-style: italic;
+//     }
+
+//     input:-moz-placeholder { /* Firefox 18- */
+//       color: #999999 !important;
+//       font-style: italic;
+//     }
+
+//     input::-moz-placeholder { /* Firefox 19+ */
+//       color: #999999 !important;
+//       font-style: italic;
+//     }
+
+//     input:-ms-input-placeholder {
+//       color: #999999 !important;
+//       font-style: italic;
+//     }
+//   }
+
+//   .form-content {
+//     padding-left: 16px;
+//     padding-right: 16px;
+
+//     .form-control {
+//     }
+//   }
+
+
+//   .login-user {
+//     background-image: url("~ux-common-icons/svg/patient-default.svg");
+//     background-repeat: no-repeat;
+//     background-position: 4px center;
+//     background-size: 16px 16px;
+//     padding-left: 24px;
+//   }
+
+//   .login-password {
+//     background-image: url("~ux-common-icons/svg/key-default.svg");
+//     background-repeat: no-repeat;
+//     background-position: 4px center;
+//     background-size: 16px 16px;
+//     padding-left: 24px;
+//   }
+// }

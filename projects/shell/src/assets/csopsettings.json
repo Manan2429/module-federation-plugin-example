@@ -1,0 +1,322 @@
+{
+  "csopsettings": {
+    "redirectUri": "https://localhost:44346/",
+    "authProviders": [
+      {
+        "name": "Shield",
+        "endPoint": "https://scripttest.allscripts.com/csopsecurityapisit/"
+      },
+      {
+        "name": "AzureAd",
+        "endPoint": "https://login.microsoftonline.com/",
+        "microsoftGraphApiScope": [
+          "User.Read",
+          "User.ReadBasic.All",
+          "Mail.Send"
+        ],
+        "microsoftGraphApiEndpoint": "https://graph.microsoft.com/",
+        "clientID": "79b912ce-11dc-4db5-b357-345810421fa0",
+        "tenantId": "ab8614a3-38fa-4410-81cc-2cff09afdee1",
+        "cacheLocation": "localStorage"
+      },
+      {
+        "name": "ShieldPassiveFederation",
+        "issuerApi": "https://edge.shield.mdrxdev.com/saml/v1/issue",
+        "ACSEndpoint": "https://localhost:44346/ShieldPassiveFederation/GetSAMLResponse",
+        "aupEndpoint": "https://authorize.shieldedge.allscripts.com/shieldaup/service.svc/username",
+        "idpList": [
+          "https://sts.windows.net/ab8614a3-38fa-4410-81cc-2cff09afdee1/"
+        ],
+        "certificates": [
+          {
+            "type": "encryption",
+            "name": "passiveFed",
+            "thumbprint": "988ca4f6f47fb1a77901ed8989f3f200c0578684"
+          },
+          {
+            "type": "signing",
+            "name": "passiveFed",
+            "thumbprint": "759417b2136ca772af6871886966760ca9794ab5"
+          }
+        ],
+        "metadataUrl": "https://edge.shield.mdrxdev.com/saml/v1/metadata",
+        "userEffectiveRoleApi": "https://provision.shieldedge.allscripts.com/ServiceLayer/UserProfileManagementService.svc/token"
+      }
+    ],
+    "applications": [
+      {
+        "appName": "hub-registry",
+        "apiURLs": [
+          {
+            "name": "default",
+            "url": "https://scripttest.allscripts.com/csopregistryapisit/Mdrx.Hub.Registries.API/"
+          }
+        ],
+        "includeApiRoot": true,
+        "appTitle": "Public Health Reporting Hub Management",
+        "appIcon": "Hub-registry.svg",
+        "appVersion": "1.0.0.0",
+        "appModulePath": "csop-apps/hub-registry/main.js",
+        "defaultNavigationPath": "#/hub-registry/operationalsupport/batchoperations",
+        "appColor": "lightblue",
+        "renderingOrder": 3,
+        "enhancements": null,
+        "sessionTimeout": 0,
+        "authenticationMechanism": {
+          "name": "Shield",
+          "endPoint": "",
+          "setting": [
+            {
+              "name": "default",
+              "relyingParty": "http://rp.allscripts.com/Hub/ManagementConsole",
+              "scope": "Tenant",
+              "scopeValue": "HubManagementTenant",
+              "tokenType": "JwtAuthToken",
+              "issueCompressToken": true
+            }
+          ]
+        }
+      },
+      {
+        "appName": "care-app",
+        "apiURLs": [
+          {
+            "name": "default",
+            "url": "https://carequality-management-qa2.csg.mdrxdev.com/"
+          }
+        ],
+        "includeApiRoot": false,
+        "appTitle": "CareQuality Management Portal",
+        "appIcon": "Care-app.svg",
+        "appVersion": "1.0.0.0",
+        "appModulePath": "csop-apps/care-app/main.js",
+        "defaultNavigationPath": "mfe2/home",
+        "appColor": "lightgreen",
+        "renderingOrder": 1,
+        "resourceId": "4f329d26-7b81-4a9a-90ca-3bbd75dfe313",
+        "applicationId": "3f0b103b-508f-4b03-917a-59e012effe2f",
+        "rolePrefix": "CQ",
+        "sessionTimeout": 0,
+        "authenticationMechanism": {
+          "name": "AzureAd",
+          "endPoint": "",
+          "setting": [
+            {
+              "name": "default",
+              "apiScope": [
+                "3f0b103b-508f-4b03-917a-59e012effe2f/user_impersonation"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "appName": "hub-pptx",
+        "apiURLs": [
+          {
+            "name": "default",
+            "url": "https://scripttest.allscripts.com/csophubtrakingapisit/Mdrx.Hub.Tracking.Api/api/v1/hub/"
+          },
+          {
+            "name": "health",
+            "url": "https://connect-pptx-sit.non-prod.sfapplication.az.allscriptscloud.com/"
+          },
+          {
+            "name": "calMessages",
+            "url": "https://cal-srt-web01.calsrt.com:444/API/"
+          }
+        ],
+        "includeApiRoot": false,
+        "appTitle": "Rx True Price",
+        "appIcon": "RxTP.png",
+        "appVersion": "1.0.0.0",
+        "appModulePath": "csop-apps/hub-pptx/main.js",
+        "defaultNavigationPath": "/mfe1/home",
+        "appColor": "lightskyblue",
+        "renderingOrder": 4,
+        "enhancements": null,
+        "authenticationMechanism": {
+          "name": "Shield",
+          "endPoint": "",
+          "setting": [
+            {
+              "name": "default",
+              "relyingParty": "http://rp.allscripts.com/Hub/ManagementConsole",
+              "scope": "Tenant",
+              "scopeValue": "HubManagementTenant",
+              "tokenType": "JwtAuthToken",
+              "issueCompressToken": true
+            },
+            {
+              "name": "cal",
+              "relyingParty": "http://rp.allscripts.com/cal",
+              "scope": "AppInstance",
+              "scopeValue": "CALProd2",
+              "tokenType": "SAML",
+              "issueCompressToken": false
+            },
+            {
+              "name": "health",
+              "relyingParty": "http://hub.allscripts.com/hub-pptx",
+              "scope": "Tenant",
+              "scopeValue": "HubManagementTenant",
+              "tokenType": "SAML",
+              "issueCompressToken": false
+            }
+          ]
+        }
+      },
+      {
+        "appName": "sop-app",
+        "apiURLs": [
+          {
+            "name": "default",
+            "url": "https://scripttest.allscripts.com/SopSRT/api"
+          }
+        ],
+        "includeApiRoot": true,
+        "appTitle": "Shield Operational Portal",
+        "appIcon": "Sop-app.png",
+        "appVersion": "1.0.0.0",
+        "appModulePath": "csop-apps/sop-app/main.js",
+        "defaultNavigationPath": "#/sop-app/users",
+        "appColor": "lightpink",
+        "renderingOrder": 2,
+        "enhancements": null,
+        "sessionTimeout": 0,
+        "memoryCacheExpiration": 15,
+        "authenticationMechanism": {
+          "name": "ShieldPassiveFederation",
+          "endPoint": "",
+          "setting": [
+            {
+              "name": "default",
+              "applicationName": "SOP",
+              "relyingParty": "http://rp.allscripts.com/SOP"
+            }
+          ]
+        }
+      },
+      {
+        "appName": "hub-pdmp",
+        "apiURLs": [
+          {
+            "name": "default",
+            "url": "http://10.132.12.24/mdrx.hub.tracking.api/api/v1/hub/"
+          },
+          {
+            "name": "calMessages",
+            "url": "https://cal-srt-web01.calsrt.com:444/API/"
+          }
+        ],
+        "includeApiRoot": false,
+        "appTitle": "Prescription Drug Monitoring Program",
+        "appIcon": "Pdmp.png",
+        "appVersion": "1.0.0.0",
+        "appModulePath": "csop-apps/hub-pdmp/main.js",
+        "defaultNavigationPath": "#/hub-pdmp/tracking",
+        "appColor": "thistle",
+        "renderingOrder": 5,
+        "enhancements": null,
+        "sessionTimeout": 0,
+        "authenticationMechanism": {
+          "name": "Shield",
+          "endPoint": "",
+          "setting": [
+            {
+              "name": "default",
+              "relyingParty": "http://rp.allscripts.com/Hub/ManagementConsole",
+              "scope": "Tenant",
+              "scopeValue": "HubManagementTenant",
+              "tokenType": "JwtAuthToken",
+              "issueCompressToken": true
+            },
+            {
+              "name": "cal",
+              "relyingParty": "http://rp.allscripts.com/cal",
+              "scope": "AppInstance",
+              "scopeValue": "CALProd2",
+              "tokenType": "SAML",
+              "issueCompressToken": false
+            }
+          ]
+        }
+      },
+      {
+        "appName": "hub-enrollment",
+        "apiURLs": [
+          {
+            "name": "default",
+            "url": "https://qe2hubportal.rd.allscripts.com:443/Mdrx.Hub.Enrollment.Api.phaseII/api/"
+          }
+        ],
+        "includeApiRoot": false,
+        "appIcon": "Hub-enrollment.svg",
+        "appTitle": "Hub Enrollment Portal",
+        "appVersion": "1.0.0.0",
+        "appModulePath": "csop-apps/hub-enrollment/main.js",
+        "defaultNavigationPath": "#/hub-enrollment",
+        "appColor": "plum",
+        "renderingOrder": 4,
+        "sessionTimeout": 60,
+        "enhancements": null,
+        "authenticationMechanism": {
+          "name": "Shield",
+          "endPoint": "",
+          "setting": [
+            {
+              "name": "default",
+              "relyingParty": "http://rp.allscripts.com/Hub/ManagementConsole",
+              "scope": "Tenant",
+              "scopeValue": "HubManagementTenant",
+              "tokenType": "JwtAuthToken"
+            }
+          ]
+        }
+      },
+      {
+        "appName": "bam-app",
+        "apiURLs": [
+          {
+            "name": "default",
+            "url": "https://connect-tnxtracking-int.non-prod.hub.allscriptsplatform.com/graphql/"
+          },
+          {
+            "name": "calMessages",
+            "url": "https://cal-srt-web01.calsrt.com:444/API/"
+          }
+        ],
+        "includeApiRoot": false,
+        "appIcon": "Bam-app.svg",
+        "appTitle": "BAM Portal",
+        "appVersion": "1.0.0.0",
+        "appModulePath": "csop-apps/bam-app/main.js",
+        "defaultNavigationPath": "#/bam-app/search",
+        "appColor": "#0098a0",
+        "renderingOrder": 6,
+        "enhancements": null,
+        "authenticationMechanism": {
+          "name": "Shield",
+          "endPoint": "",
+          "setting": [
+            {
+              "name": "default",
+              "relyingParty": "http://rp.allscripts.com/Hub/ManagementConsole",
+              "scope": "Tenant",
+              "scopeValue": "HubManagementTenant",
+              "tokenType": "JwtAuthToken"
+            },
+            {
+              "name": "cal",
+              "relyingParty": "http://rp.allscripts.com/cal",
+              "scope": "AppInstance",
+              "scopeValue": "CALProd2",
+              "tokenType": "SAML",
+              "issueCompressToken": false
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

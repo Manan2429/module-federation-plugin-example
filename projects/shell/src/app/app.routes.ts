@@ -6,18 +6,45 @@ import {
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { AppSelectorComponent } from './app-selector/app-selector.component';
+import { LoginComponent } from './login/login.component';
 
 const URL = 'http://localhost:3000/remoteEntry.js';
 
 export const APP_ROUTES: Routes = [
   {
     path: '',
-    component: HomeComponent,
+    component: AppSelectorComponent,
     pathMatch: 'full',
   },
 
+  {
+    path: 'login',
+    component: LoginComponent,
+    pathMatch: 'full',
+  },
+
+
   // Your route here:
 
+  {
+    path: 'mfe2',
+    loadChildren: () =>
+      loadRemoteModule({
+        type: 'manifest',
+        remoteName: 'mfe2',
+        exposedModule: './Module',
+      }).then((m) => m.HomeModule),
+  },
+  {
+    path: 'mfe1',
+    loadChildren: () =>
+      loadRemoteModule({
+        type: 'manifest',
+        remoteName: 'mfe1',
+        exposedModule: './Mfe1Module',
+      }).then((m) => m.HomeModule),
+  },
   {
     path: 'flights',
     loadChildren: () =>

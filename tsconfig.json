@@ -19,6 +19,9 @@
       "shared-lib": [
         "projects/shared-lib/src/public-api.ts"
       ],
+      "lib": [
+        "dist/lib"
+      ],
       "auth-lib": [
         "projects/auth-lib/src/public-api.ts"
       ]

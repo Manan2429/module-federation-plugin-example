@@ -1,0 +1,74 @@
+<!-- P r o p r i e t a r y N o t i c e */
+/* Unpublished © 2020 Allscripts Healthcare, LLC and/or its affiliates. All Rights
+Reserved.
+*
+* P r o p r i e t a r y N o t i c e: This software has been provided pursuant to a License Agreement, with Allscripts
+Healthcare, LLC and/or its affiliates, containing restrictions on its use. This software contains valuable trade secrets
+and proprietary information of Allscripts Healthcare, LLC and/or its affiliates and is protected by trade secret and
+copyright law. This software may not be copied or distributed in any form or medium, disclosed to any third parties,
+or used in any manner not provided for in said License Agreement except with prior written authorization from
+Allscripts Healthcare, LLC and/or its affiliates. Notice to U.S. Government Users: This software is “Commercial
+Computer Software.”
+Allscripts Common Services Operations Portal is a trademark of Allscripts Healthcare, LLC and/or its affiliates.
+*
+*
+*/
+/* P r o p r i e t a r y N o t i c e -->
+
+<div class="login-page">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <div [id]="progressBarId" class="content">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="login-panel">
+    <img class="logo" src="/assets/images/allscripts-logo-04.svg">
+    <div class="line-part"></div>
+    <div class="title" style="margin-bottom: 32px;">{{appTitle}}</div>
+    <div class="alert alert-danger" [hidden]="!showError">
+      {{errorMessage}}
+    </div>
+    <form role="form">
+      <div class="form-content">
+        <div class="form-group">
+          <input type="text" class="form-control login-user" [(ngModel)]="uName" name="uName" placeholder="{{uNameLabel}}">
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control login-password" name="pwd" [(ngModel)]="pwd" placeholder="{{pwdLabel}}">
+        </div>
+        <div class="form-group" *ngIf="showEnvrionmentDropdown">
+          <label>Environment</label>
+          <select class="form-control" name="environmentInfo" [(ngModel)]="selectedEnvironment">
+            <option [selected]="selectedEnvironment" ng-selected="environmentList[0]" *ngFor="let env of environmentList" value={{env}}>
+              {{env}}
+            </option>
+          </select>
+        </div>
+        <!--<label class="control control--checkbox">
+            Remember Me
+            <input type="checkbox" checked="checked" />
+            <div class="control__indicator"></div>
+        </label>-->
+        <button id="btnLogin" class="btn rounded-btn" (click)="userLogin()" [disabled]="busy">
+          <div class="row justify-content-center align-items-center">
+            <span class="col col-auto">Log in</span>
+            <!--<div class="col col-auto justify-items-center" style="padding-top: 8px;">
+                <asg-progress spinnerSize="small"  progtype="spinner" [hidden]="!busy"></asg-progress>
+            </div>-->
+          </div>
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <div>
+    <a href="\">Return to Application Selection</a>
+  </div>
+
+  <p class="copy-right d-none d-md-block">
+    © 2020 Allscripts Healthcare, LLC and/or its affiliates. All Rights Reserved. This software is the confidential and proprietary information of Allscripts Healthcare, LLC and/or its affiliates (hereinafter “Allscripts Healthcare, LLC”) and is protected by trade secret and copyright law. This software and all related rights are the exclusive property of Allscripts Healthcare, LLC. All use, modification, reproduction, release, performance, display and/or disclosure is governed by the license terms of Allscripts Healthcare, LLC. Notice to U.S. Government Users: This medium and its contents constitute “Commercial Computer Software” within the meaning of FAR 2.101 (November 2007), FAR Part 12.212 (October 1995), FAR 27.405-3 (November 2007), DFARS Part 227.7202 (June 1995) and DFARS 252.227-7014 (a) (June 1995). Manufacturer is Allscripts Healthcare, LLC, 222 Merchandise Mart Plaza, Suite #2024, Chicago, IL 60654. Allscripts {{appTitle}} is a trademark of Allscripts Healthcare, LLC.
+  </p>
+</div>
