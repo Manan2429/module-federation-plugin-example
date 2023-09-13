@@ -20,7 +20,7 @@ import { MsalBroadcastService, MsalService  } from '@azure/msal-angular';
 import { JwksValidationHandler, ValidationParams } from 'angular-oauth2-oidc';
 import jwt_decode from 'jwt-decode';
 import { User } from 'msal';
-import { Subscription } from 'rxjs';
+import { Subscription , lastValueFrom} from 'rxjs';
 import {
   AppProfile,
   AzureUserProfile
